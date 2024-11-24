@@ -1,0 +1,26 @@
+class Solution {
+    public int getSecondLargest(int[] arr) {
+        int max = -1;
+        int smax = -1; 
+
+        for(int i : arr) 
+        {
+            if (i > max) 
+            {
+                smax = max; 
+                max = i;  
+            } 
+            else if (i > smax && i != max) 
+            {
+                smax = i;
+            }
+        }
+
+        return smax; 
+    }
+}
+
+The idea is to keep track of the largest and second largest element while traversing the array. Initialize max and smax with -1. Now, for any index i,
+
+If arr[i] > smax, update smax with max and max with arr[i].
+Else If arr[i] < max and arr[i] > smax, update smax with arr[i].
