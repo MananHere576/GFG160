@@ -1,0 +1,18 @@
+class Solution 
+{
+    public void reverseArray(int arr[]) 
+    {
+        int m = 0;
+        int n = arr.length - 1;
+        int t;
+        
+        while (m < n) 
+        {
+            t = arr[m];
+            arr[m] = arr[n];
+            arr[n] = t;
+            m++;
+            n--;
+        }
+    }
+}
