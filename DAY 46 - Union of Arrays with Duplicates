@@ -1,0 +1,13 @@
+class Solution {
+    public static int findUnion(int a[], int b[]) 
+    {
+        ArrayList<Integer> g = new ArrayList<Integer>();
+        for(int i=0;i<a.length;i++)
+        if(!g.contains(a[i]))
+        g.add(a[i]);
+        for(int i=0;i<b.length;i++)
+            if(!g.contains(b[i]))
+            g.add(b[i]);
+        return (g.size());
+    }
+}
