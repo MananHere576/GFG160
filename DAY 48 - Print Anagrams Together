@@ -1,0 +1,35 @@
+class Solution {
+    public ArrayList<ArrayList<String>> anagrams(String[] arr) {
+        ArrayList<String> array = new ArrayList<>();
+        for (String s : arr) array.add(s);
+
+        ArrayList<ArrayList<String>> list = new ArrayList<>();
+        while (!array.isEmpty()) {
+            ArrayList<String> l = new ArrayList<>();
+            int n=array.size();
+            for (int i = 0; i < n ;i++) {
+                if (l.isEmpty()) {
+                    l.add(array.get(i));
+                } else {
+                    if (areAnagram(l.get(0), array.get(i))) {
+                        l.add(array.get(i));
+                    }
+                }
+            }
+            for(String s:l) array.remove(s);
+            list.add(l);
+        }
+        return list;
+    }
+
+
+    static boolean areAnagram(String S1, String S2) {
+        char ch[] = S1.toCharArray();
+        char ch1[] = S2.toCharArray();
+        Arrays.sort(ch);
+        Arrays.sort(ch1);
+        if (Arrays.equals(ch, ch1)) {
+            return true;
+        } else return false;
+    }
+}
