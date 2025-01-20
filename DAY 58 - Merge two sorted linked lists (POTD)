@@ -1,0 +1,32 @@
+class Solution {
+    Node sortedMerge(Node head1, Node head2) {
+        // code here
+        Node mergedList=new Node(0);
+        Node ans=mergedList;
+        Node ptr1=head1;
+        Node ptr2=head2;
+        while(ptr1!=null&&ptr2!=null)
+        {
+            if(ptr1.data<ptr2.data)
+            {
+                mergedList.next=ptr1;
+                ptr1=ptr1.next;
+                mergedList=mergedList.next;
+            }
+            else{
+                mergedList.next=ptr2;
+                ptr2=ptr2.next;
+                mergedList=mergedList.next;
+            }
+        }
+        if(ptr1!=null)
+        {
+            mergedList.next=ptr1;
+        }
+        if(ptr2!=null)
+        {
+           mergedList.next=ptr2; 
+        }
+        return ans.next;
+    }
+}
