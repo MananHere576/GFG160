@@ -1,0 +1,14 @@
+class Solution {
+
+    public int maxWater(int arr[]) {
+        // Code Here
+        int left = 0 , right = arr.length - 1;
+        int max = 0;
+        while (left < right) {
+            max = Math.max( Math.min(arr[left] , arr[right]) * (right - left) , max);
+            if(arr[left] > arr[right]) right--;
+            else left++;
+        }
+        return max;
+    }
+}
