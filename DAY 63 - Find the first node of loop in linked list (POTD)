@@ -1,0 +1,34 @@
+// User function Template for Java
+
+/* class Node
+{
+    int data;
+    Node next;
+
+    Node(int x)
+    {
+        data = x;
+        next = null;
+    }
+}*/
+
+class Solution {
+    public static Node findFirstNode(Node head) {
+        // code here
+        HashSet<Node>arr=new HashSet<>();
+        Node temp=head;
+        while(temp!=null){
+            if(arr.contains(temp)){
+                return temp;
+            }
+            else
+        {
+            arr.add(temp);
+            
+        }
+        temp=temp.next;
+        }
+        
+        return new Node(-1);
+    }
+}
