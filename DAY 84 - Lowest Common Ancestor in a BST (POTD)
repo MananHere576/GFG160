@@ -1,0 +1,39 @@
+/*
+class Node
+{
+    int data;
+    Node left, right;
+
+    public Node(int d)
+    {
+        data = d;
+        left = right = null;
+    }
+}
+*/
+
+class Result{
+    Node node = null;
+}
+class Solution {
+    Node LCA(Node root, Node n1, Node n2) {
+        Result res = new Result();
+        postOrderTraversal(root, n1, n2, res);
+        return res.node==null? root: res.node;
+    }
+    public boolean postOrderTraversal(Node node, Node n1, Node n2, Result res){
+        if(node ==null){
+            return false;
+        };
+        boolean left = postOrderTraversal(node.left, n1, n2, res);
+        boolean right = postOrderTraversal(node.right, n1, n2, res);
+        if(left && right){
+            res.node = node;
+        }else if((left || right) && (node == n1 || node == n2))
+        {
+            res.node = node;
+        }
+        return left || right || node ==n1 || node ==n2;
+    }
+
+}
