@@ -1,0 +1,41 @@
+
+// User function Template for Java
+
+// class Node
+// {
+//     int data;
+//     Node left, right;
+
+//     public Node(int d)
+//     {
+//         data = d;
+//         left = right = null;
+//     }
+// }
+
+class Solution {
+    public int kthSmallest(Node root, int k) {
+        Stack<Node> stack = new Stack<>();
+        Node current = root;
+
+        while (current != null || !stack.isEmpty()) {
+
+            while (current != null) {
+                stack.push(current);
+                current = current.left;
+            }
+
+            current = stack.pop();
+            k--; 
+
+
+            if (k == 0) {
+                return current.data;
+            }
+
+            current = current.right;
+        }
+
+        return -1;
+    }
+}
